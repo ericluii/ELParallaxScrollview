@@ -49,7 +49,10 @@
     CGPoint distanceToTravel = CGPointMake(_endPoint.x - _startPoint.x, _endPoint.y - _startPoint.y);
     CGPoint timeForTravel = CGPointMake(_animationEndPoint.x - _animationStartPoint.x, _animationEndPoint.y - _animationStartPoint.y);
     
-    _translationSpeed = CGPointMake(distanceToTravel.x/timeForTravel.x, distanceToTravel.y/timeForTravel.y);
+    _translationSpeed = CGPointMake(distanceToTravel.x/timeForTravel.y, distanceToTravel.y/timeForTravel.y);
+    
+    if (isnan(_translationSpeed.x)) {_translationSpeed.x = 0;}
+    if (isnan(_translationSpeed.y)) {_translationSpeed.y = 0;}
 }
 
 @end
@@ -72,13 +75,17 @@
         _mainScrollview = [[UIScrollView alloc] initWithFrame:frame];
         [_mainScrollview setDelegate:self];
         
-        [self addSubview:_mainScrollview];
+        [super addSubview:_mainScrollview];
     }
     return self;
 }
 
 -(void)setContentSize:(CGSize)size {
     [_mainScrollview setContentSize:size];
+}
+
+-(void)addSubview:(UIView *)view {
+    [_mainScrollview addSubview:view];
 }
 
 -(void)addSubview:(UIView *)view withEndPoint:(CGPoint)endPoint {
@@ -101,21 +108,21 @@
 #pragma mark - UIScrollviewDelegate Methods
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@"Scrollview Offset: %@", NSStringFromCGPoint(scrollView.contentOffset));
     CGPoint contentOffset = scrollView.contentOffset;
     
     for (ParallaxView * pView in _parallaxViewsArray) {
         if (pView.animationStartPoint.y <= contentOffset.y && pView.animationEndPoint.y >= contentOffset.y) {
             CGRect frame = pView.view.frame;
             frame.origin.y = ((contentOffset.y - pView.animationStartPoint.y) * pView.translationSpeed.y) + pView.startPoint.y;
+            frame.origin.x = ((contentOffset.y - pView.animationStartPoint.y) * pView.translationSpeed.x) + pView.startPoint.x;
             [pView.view setFrame:frame];
         } else if (pView.animationStartPoint.y >= contentOffset.y) {
             CGRect frame = pView.view.frame;
-            frame.origin.y = pView.startPoint.y;
+            frame.origin = pView.startPoint;
             [pView.view setFrame:frame];
         } else {
             CGRect frame = pView.view.frame;
-            frame.origin.y = pView.endPoint.y;
+            frame.origin = pView.endPoint;
             [pView.view setFrame:frame];
         }
     }
