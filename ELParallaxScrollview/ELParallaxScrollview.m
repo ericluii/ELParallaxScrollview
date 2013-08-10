@@ -11,23 +11,26 @@
 @interface ParallaxView : NSObject
 
 @property (nonatomic, strong) UIView * view;
-@property (nonatomic, assign) CGPoint animationStartPoint;
-@property (nonatomic, assign) CGPoint animationEndPoint;
+@property (nonatomic, assign) CGFloat animationStartPoint;
+@property (nonatomic, assign) CGFloat animationEndPoint;
 @property (nonatomic, assign) CGPoint startPoint;
 @property (nonatomic, assign) CGPoint endPoint;
 @property (nonatomic, readonly) CGPoint translationSpeed;
+@property (nonatomic, assign) bool isVertical;
 
 -(id)initWithView:(UIView *)view andEndPoint:(CGPoint)endPoint
-                        andAnimationStartPoint:(CGPoint)animationStartPoint
-                          andAnimationEndPoint:(CGPoint)animationEndPoint;
+                        andAnimationStartPoint:(CGFloat)animationStartPoint
+                          andAnimationEndPoint:(CGFloat)animationEndPoint
+                                  andDirection:(bool)isVertical;
 
 @end
 
 @implementation ParallaxView
 
 -(id)initWithView:(UIView *)view andEndPoint:(CGPoint)endPoint
-                        andAnimationStartPoint:(CGPoint)animationStartPoint
-                          andAnimationEndPoint:(CGPoint)animationEndPoint {
+                      andAnimationStartPoint:(CGFloat)animationStartPoint
+                        andAnimationEndPoint:(CGFloat)animationEndPoint
+                                andDirection:(bool)isVertical {
     self = [super init];
     
     if (self) {
@@ -39,6 +42,8 @@
         _startPoint = view.frame.origin;
         _endPoint = endPoint;
         
+        _isVertical = isVertical;
+        
         [self updateTranslationSpeed];
     }
     
@@ -47,9 +52,9 @@
 
 -(void)updateTranslationSpeed {
     CGPoint distanceToTravel = CGPointMake(_endPoint.x - _startPoint.x, _endPoint.y - _startPoint.y);
-    CGPoint timeForTravel = CGPointMake(_animationEndPoint.x - _animationStartPoint.x, _animationEndPoint.y - _animationStartPoint.y);
+    CGFloat timeForTravel = _animationEndPoint - _animationStartPoint;
     
-    _translationSpeed = CGPointMake(distanceToTravel.x/timeForTravel.y, distanceToTravel.y/timeForTravel.y);
+    _translationSpeed = CGPointMake(distanceToTravel.x/timeForTravel, distanceToTravel.y/timeForTravel);
     
     if (isnan(_translationSpeed.x)) {_translationSpeed.x = 0;}
     if (isnan(_translationSpeed.y)) {_translationSpeed.y = 0;}
@@ -66,7 +71,7 @@
 
 @implementation ELParallaxScrollview
 
--(id)initWithFrame:(CGRect)frame {
+-(id)initWithFrame:(CGRect)frame andIsVertical:(bool)isVertical {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
@@ -74,6 +79,8 @@
         
         _mainScrollview = [[UIScrollView alloc] initWithFrame:frame];
         [_mainScrollview setDelegate:self];
+        
+        _isVertical = isVertical;
         
         [super addSubview:_mainScrollview];
     }
@@ -90,17 +97,18 @@
 
 -(void)addSubview:(UIView *)view withEndPoint:(CGPoint)endPoint {
     [self addSubview:view withEndPoint:endPoint
-                andAnimationStartPoint:view.frame.origin
-                  andAnimationEndPoint:endPoint];
+                     andAnimationStart:(_isVertical ? view.frame.origin.y : view.frame.origin.x)
+                       andAnimationEnd:(_isVertical ? endPoint.y : endPoint.x)];
 }
 
 -(void)addSubview:(UIView *)view withEndPoint:(CGPoint)endPoint
-                       andAnimationStartPoint:(CGPoint)animationStartPoint
-                         andAnimationEndPoint:(CGPoint)animationEndPoint {
+                       andAnimationStart:(CGFloat)animationStartPoint
+                         andAnimationEnd:(CGFloat)animationEndPoint {
     ParallaxView *pView = [[ParallaxView alloc] initWithView:view
                                                  andEndPoint:endPoint
                                       andAnimationStartPoint:animationStartPoint
-                                        andAnimationEndPoint:animationEndPoint];
+                                        andAnimationEndPoint:animationEndPoint
+                                                andDirection:_isVertical];
     [_parallaxViewsArray addObject:pView];
     [_mainScrollview addSubview:pView.view];
 }
@@ -108,15 +116,15 @@
 #pragma mark - UIScrollviewDelegate Methods
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGPoint contentOffset = scrollView.contentOffset;
+    CGFloat contentOffset = (_isVertical ? scrollView.contentOffset.y : scrollView.contentOffset.x);
     
     for (ParallaxView * pView in _parallaxViewsArray) {
-        if (pView.animationStartPoint.y <= contentOffset.y && pView.animationEndPoint.y >= contentOffset.y) {
+        if (pView.animationStartPoint <= contentOffset && pView.animationEndPoint >= contentOffset) {
             CGRect frame = pView.view.frame;
-            frame.origin.y = ((contentOffset.y - pView.animationStartPoint.y) * pView.translationSpeed.y) + pView.startPoint.y;
-            frame.origin.x = ((contentOffset.y - pView.animationStartPoint.y) * pView.translationSpeed.x) + pView.startPoint.x;
+            frame.origin.y = ((contentOffset - pView.animationStartPoint) * pView.translationSpeed.y) + pView.startPoint.y;
+            frame.origin.x = ((contentOffset - pView.animationStartPoint) * pView.translationSpeed.x) + pView.startPoint.x;
             [pView.view setFrame:frame];
-        } else if (pView.animationStartPoint.y >= contentOffset.y) {
+        } else if (pView.animationStartPoint >= contentOffset) {
             CGRect frame = pView.view.frame;
             frame.origin = pView.startPoint;
             [pView.view setFrame:frame];

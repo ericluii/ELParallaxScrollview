@@ -10,11 +10,15 @@
 
 @interface ELParallaxScrollview : UIView <UIScrollViewDelegate>
 
+@property (nonatomic, readonly) bool isVertical;
+
+-(id)initWithFrame:(CGRect)frame andIsVertical:(bool)isVertical;
+
 -(void)setContentSize:(CGSize)size;
 
 -(void)addSubview:(UIView *)view withEndPoint:(CGPoint)endPoint;
 -(void)addSubview:(UIView *)view withEndPoint:(CGPoint)endPoint
-                        andAnimationStartPoint:(CGPoint)animationStartPoint
-                          andAnimationEndPoint:(CGPoint)animationEndPoint;
+                        andAnimationStart:(CGFloat)animationStartPoint
+                          andAnimationEnd:(CGFloat)animationEndPoint;
 
 @end
