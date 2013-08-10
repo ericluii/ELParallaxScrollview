@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07173B6217B69C4500FF8885 /* water.png in Resources */ = {isa = PBXBuildFile; fileRef = 07173B6117B69C4500FF8885 /* water.png */; };
+		07173B6417B6A24800FF8885 /* ELViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07173B6317B6A24800FF8885 /* ELViewController.xib */; };
+		0792BAB617B68E170078BA98 /* ELParallaxScrollview.m in Sources */ = {isa = PBXBuildFile; fileRef = 0792BAB517B68E170078BA98 /* ELParallaxScrollview.m */; };
 		07C5BAB917B5DB8B006F06F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C5BAB817B5DB8B006F06F9 /* UIKit.framework */; };
 		07C5BABB17B5DB8B006F06F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C5BABA17B5DB8B006F06F9 /* Foundation.framework */; };
 		07C5BABD17B5DB8B006F06F9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C5BABC17B5DB8B006F06F9 /* CoreGraphics.framework */; };
@@ -17,10 +20,13 @@
 		07C5BACD17B5DB8C006F06F9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C5BACC17B5DB8C006F06F9 /* Default@2x.png */; };
 		07C5BACF17B5DB8C006F06F9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C5BACE17B5DB8C006F06F9 /* Default-568h@2x.png */; };
 		07C5BAD217B5DB8C006F06F9 /* ELViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C5BAD117B5DB8C006F06F9 /* ELViewController.m */; };
-		07C5BAD517B5DB8C006F06F9 /* ELViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07C5BAD317B5DB8C006F06F9 /* ELViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07173B6117B69C4500FF8885 /* water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water.png; sourceTree = "<group>"; };
+		07173B6317B6A24800FF8885 /* ELViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELViewController.xib; sourceTree = "<group>"; };
+		0792BAB417B68E170078BA98 /* ELParallaxScrollview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELParallaxScrollview.h; sourceTree = "<group>"; };
+		0792BAB517B68E170078BA98 /* ELParallaxScrollview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELParallaxScrollview.m; sourceTree = "<group>"; };
 		07C5BAB517B5DB8B006F06F9 /* ELParallaxScrollviewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ELParallaxScrollviewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07C5BAB817B5DB8B006F06F9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		07C5BABA17B5DB8B006F06F9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -36,7 +42,6 @@
 		07C5BACE17B5DB8C006F06F9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		07C5BAD017B5DB8C006F06F9 /* ELViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ELViewController.h; sourceTree = "<group>"; };
 		07C5BAD117B5DB8C006F06F9 /* ELViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ELViewController.m; sourceTree = "<group>"; };
-		07C5BAD417B5DB8C006F06F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ELViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,10 +58,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0792BAB317B68CD60078BA98 /* ELParallaxScrollview */ = {
+			isa = PBXGroup;
+			children = (
+				0792BAB417B68E170078BA98 /* ELParallaxScrollview.h */,
+				0792BAB517B68E170078BA98 /* ELParallaxScrollview.m */,
+			);
+			path = ELParallaxScrollview;
+			sourceTree = "<group>";
+		};
+		0792BAB717B69B0E0078BA98 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				07173B6117B69C4500FF8885 /* water.png */,
+			);
+			name = Images;
+			path = /Users/Eric/Documents/ELParallaxScrollviewDemo/Images;
+			sourceTree = "<absolute>";
+		};
 		07C5BAAC17B5DB8B006F06F9 = {
 			isa = PBXGroup;
 			children = (
+				0792BAB317B68CD60078BA98 /* ELParallaxScrollview */,
 				07C5BABE17B5DB8C006F06F9 /* ELParallaxScrollviewDemo */,
+				0792BAB717B69B0E0078BA98 /* Images */,
 				07C5BAB717B5DB8B006F06F9 /* Frameworks */,
 				07C5BAB617B5DB8B006F06F9 /* Products */,
 			);
@@ -87,7 +112,7 @@
 				07C5BAC817B5DB8C006F06F9 /* ELAppDelegate.m */,
 				07C5BAD017B5DB8C006F06F9 /* ELViewController.h */,
 				07C5BAD117B5DB8C006F06F9 /* ELViewController.m */,
-				07C5BAD317B5DB8C006F06F9 /* ELViewController.xib */,
+				07173B6317B6A24800FF8885 /* ELViewController.xib */,
 				07C5BABF17B5DB8C006F06F9 /* Supporting Files */,
 			);
 			path = ELParallaxScrollviewDemo;
@@ -163,7 +188,8 @@
 				07C5BACB17B5DB8C006F06F9 /* Default.png in Resources */,
 				07C5BACD17B5DB8C006F06F9 /* Default@2x.png in Resources */,
 				07C5BACF17B5DB8C006F06F9 /* Default-568h@2x.png in Resources */,
-				07C5BAD517B5DB8C006F06F9 /* ELViewController.xib in Resources */,
+				07173B6217B69C4500FF8885 /* water.png in Resources */,
+				07173B6417B6A24800FF8885 /* ELViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +203,7 @@
 				07C5BAC517B5DB8C006F06F9 /* main.m in Sources */,
 				07C5BAC917B5DB8C006F06F9 /* ELAppDelegate.m in Sources */,
 				07C5BAD217B5DB8C006F06F9 /* ELViewController.m in Sources */,
+				0792BAB617B68E170078BA98 /* ELParallaxScrollview.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,14 +216,6 @@
 				07C5BAC217B5DB8C006F06F9 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		07C5BAD317B5DB8C006F06F9 /* ELViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				07C5BAD417B5DB8C006F06F9 /* en */,
-			);
-			name = ELViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -299,6 +318,7 @@
 				07C5BADA17B5DB8C006F06F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
