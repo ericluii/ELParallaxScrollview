@@ -7,8 +7,11 @@
 //
 
 #import "ELViewController.h"
+#import "ELParallaxScrollview.h"
 
 @interface ELViewController ()
+
+@property (nonatomic, strong) ELParallaxScrollview * psv;
 
 @end
 
@@ -18,12 +21,18 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    _psv = [[ELParallaxScrollview alloc] initWithFrame:CGRectOffset([[UIScreen mainScreen] applicationFrame], 0, -20)];
+    [_psv setContentSize:CGSizeMake([[UIScreen mainScreen] applicationFrame].size.width, 2000)];
+    
+    [self setupDemoViews];
+    
+    [self.view addSubview:_psv];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setupDemoViews {
+    UIView *box = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
+    [box setBackgroundColor:[UIColor greenColor]];
+    [_psv addSubview:box withEndPoint:CGPointMake(0, 500) andAnimationStartPoint:CGPointMake(0, 0) andAnimationEndPoint:CGPointMake(0, 200)];
 }
 
 @end
