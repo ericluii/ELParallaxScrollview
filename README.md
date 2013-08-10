@@ -2,7 +2,7 @@ ELParallaxScrollview
 ====================
 This project was created as an easy way to introduce parallax scrolling into iOS. It is a single class which inherits from a UIView and contains a regular UIScrollView.
 
-<iframe width="420" height="315" src="//www.youtube.com/embed/oxJqNcEaJaA" frameborder="0" allowfullscreen></iframe>
+[Demo of Class [Youtube]](http://www.youtube.com/watch?v=oxJqNcEaJaA)
 
 Features
 ====================
