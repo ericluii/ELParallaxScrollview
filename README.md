@@ -53,6 +53,25 @@ The above are your three choices for adding the subviews. In the order they appe
 2. Begins animating when the scrollview offset is greater than the view's original frame location and less than the endPoint parameter. EndPoint is where the frame will end up. Both the x and y will be translated, so think carefully about what values you put.
 3. This method is just like the 2 except you can manually dictate at what point the animation should start and stop while scrolling.
 
+You can alos set headers and footer views which will automatically be placed before and after the scrollview, which can be done with the following calls
+
+```
+-(void)setHeaderView:(UIView *)view;
+-(void)setFooterView:(UIView *)view;
+```
+
+Delegate
+=====================
+
+There are two optional delegate methods at the moment, each are related to the header and footer. The optional methods are triggered when either the header or footer are visible, and the parameter that is passed through it is the amount of the uiview that is visible.
+
+```
+-(void)scrollViewDidStopDraggingWithHeaderVisible:(CGFloat)visibleHeight;
+-(void)scrollViewDidStopDraggingWithFooterVisible:(CGFloat)visibleHeight;
+```
+
+An example of a usage would be, when a certain amount of the header is visible, you can push a new view controller or trigger animations.
+
 Coming Soon
 =====================
 The following list will soon be implemented:

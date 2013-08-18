@@ -66,6 +66,7 @@
 
 @property (nonatomic, strong) UIScrollView * mainScrollview;
 @property (nonatomic, strong) NSMutableArray * parallaxViewsArray;
+@property (nonatomic, strong) UIView * headerView, * footerView;
 
 @end
 
@@ -89,6 +90,42 @@
 
 -(void)setContentSize:(CGSize)size {
     [_mainScrollview setContentSize:size];
+    
+    if (_footerView) {
+        CGRect frame = _footerView.frame;
+        frame.origin.y = size.height;
+        [_footerView setFrame:frame];
+    }
+}
+
+-(void)setHeaderView:(UIView *)view {
+    if (_headerView) {
+        [_headerView removeFromSuperview];
+    }
+    
+    if (view) {
+        CGRect frame = view.frame;
+        frame.origin = CGPointMake(0, -CGRectGetHeight(view.frame));
+        [view setFrame:frame];
+        [_mainScrollview addSubview:view];
+    }
+    
+    _headerView = view;
+}
+
+-(void)setFooterView:(UIView *)view {
+    if (_footerView) {
+        [_footerView removeFromSuperview];
+    }
+    
+    if (view) {
+        CGRect frame = view.frame;
+        frame.origin = CGPointMake(0, _mainScrollview.contentSize.height);
+        [view setFrame:frame];
+        [_mainScrollview addSubview:view];
+    }
+    
+    _footerView = view;
 }
 
 -(void)addSubview:(UIView *)view {
@@ -132,6 +169,23 @@
             CGRect frame = pView.view.frame;
             frame.origin = pView.endPoint;
             [pView.view setFrame:frame];
+        }
+    }
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    CGFloat contentOffset = (_isVertical ? scrollView.contentOffset.y : scrollView.contentOffset.x);
+    CGFloat scrollViewSize = (_isVertical ? scrollView.frame.size.height : scrollView.frame.size.width);
+    CGFloat contentSize = (_isVertical ? scrollView.contentSize.height : scrollView.contentSize.width);
+    CGFloat difference = contentOffset + scrollViewSize - contentSize;
+    
+    if (_footerView && difference >= 0) {
+        if ([_delegate respondsToSelector:@selector(scrollViewDidStopDraggingWithFooterVisible:)]) {
+            [_delegate scrollViewDidStopDraggingWithFooterVisible:difference];
+        }
+    } else if (_headerView && contentOffset < 0) {
+        if ([_delegate respondsToSelector:@selector(scrollViewDidStopDraggingWithHeaderVisible:)]) {
+            [_delegate scrollViewDidStopDraggingWithHeaderVisible:-contentOffset];
         }
     }
 }
