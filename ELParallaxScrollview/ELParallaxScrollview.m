@@ -7,13 +7,10 @@
 //
 
 #import "ELParallaxScrollview.h"
-#import <CoreMotion/CoreMotion.h>
 
 @interface ParallaxView : NSObject
 
 @property (nonatomic, strong) UIView * view;
-@property (nonatomic, strong) CMGyroData * initialRotation, * updatedRotation;
-@property (nonatomic, strong) CMMotionManager * motionManager;
 @property (nonatomic, assign) CGFloat animationStartPoint;
 @property (nonatomic, assign) CGFloat animationEndPoint;
 @property (nonatomic, assign) CGPoint startPoint;
@@ -37,28 +34,6 @@
     self = [super init];
     
     if (self) {
-        _motionManager = [[CMMotionManager alloc] init];
-        
-        if([self.motionManager isGyroAvailable])
-        {
-            if([self.motionManager isGyroActive] == NO)
-            {
-                /* Update us 2 times a second */
-                [self.motionManager setGyroUpdateInterval:1.0f / 2.0f];
-
-                /* Receive the gyroscope data on this block */
-                [self.motionManager startGyroUpdatesToQueue:[NSOperationQueue mainQueue]
-                                                withHandler:^(CMGyroData *gyroData, NSError *error)
-                 {
-                     if (!_initialRotation) {
-                         _initialRotation = gyroData;
-                     } else {
-                         _updatedRotation = gyroData;
-                     }
-                 }];
-            }
-        }
-        
         _view = view;
         
         _animationStartPoint = animationStartPoint;
