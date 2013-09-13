@@ -76,6 +76,7 @@ Coming Soon
 =====================
 The following list will soon be implemented:
 
+- Gyroscope based parallax for specific views of your choice.
 - ParallaxScrollingDelegate to allow further customization of behaviour as you scroll. This will allow you to go crazy and do anything from swapping images to resizing etc.
 - Native opacity with parallax scrolling. Will allow for fading in and out of elements, which can be very useful.
 - Multi-axis support, so that a large 'canvas' can properly view multiple parallaxing layers
