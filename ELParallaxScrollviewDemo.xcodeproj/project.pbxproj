@@ -11,11 +11,12 @@
 		07173B6717B6BDD800FF8885 /* mountain@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07173B6517B6BDD800FF8885 /* mountain@2x.png */; };
 		07173B6817B6BDD800FF8885 /* sky@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07173B6617B6BDD800FF8885 /* sky@2x.png */; };
 		07173B6B17B6BFBF00FF8885 /* mountain.png in Resources */ = {isa = PBXBuildFile; fileRef = 07173B6917B6BFBF00FF8885 /* mountain.png */; };
-		07173B6C17B6BFBF00FF8885 /* sky.png in Resources */ = {isa = PBXBuildFile; fileRef = 07173B6A17B6BFBF00FF8885 /* sky.png */; };
+		07173B6C17B6BFBF00FF8885 /* mountain.png in Resources */ = {isa = PBXBuildFile; fileRef = 07173B6A17B6BFBF00FF8885 /* mountain.png */; };
 		0792BAB617B68E170078BA98 /* ELParallaxScrollview.m in Sources */ = {isa = PBXBuildFile; fileRef = 0792BAB517B68E170078BA98 /* ELParallaxScrollview.m */; };
 		07A0312A17B6D3B60060389A /* KGLoveSomebody.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07A0312917B6D3B60060389A /* KGLoveSomebody.ttf */; };
 		07A0312C17B6DA9B0060389A /* triforce.png in Resources */ = {isa = PBXBuildFile; fileRef = 07A0312B17B6DA9B0060389A /* triforce.png */; };
 		07A0312E17B6E1BD0060389A /* create_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 07A0312D17B6E1BD0060389A /* create_bg.png */; };
+		07BECADA17E390DF00DB9355 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07BECAD917E390DF00DB9355 /* CoreMotion.framework */; };
 		07C5BAB917B5DB8B006F06F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C5BAB817B5DB8B006F06F9 /* UIKit.framework */; };
 		07C5BABB17B5DB8B006F06F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C5BABA17B5DB8B006F06F9 /* Foundation.framework */; };
 		07C5BABD17B5DB8B006F06F9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C5BABC17B5DB8B006F06F9 /* CoreGraphics.framework */; };
@@ -30,15 +31,16 @@
 
 /* Begin PBXFileReference section */
 		07173B6317B6A24800FF8885 /* ELViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELViewController.xib; sourceTree = "<group>"; };
-		07173B6517B6BDD800FF8885 /* mountain@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mountain@2x.png"; path = "Images/mountain@2x.png"; sourceTree = "<group>"; };
-		07173B6617B6BDD800FF8885 /* sky@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sky@2x.png"; path = "Images/sky@2x.png"; sourceTree = "<group>"; };
-		07173B6917B6BFBF00FF8885 /* mountain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mountain.png; path = Images/mountain.png; sourceTree = "<group>"; };
-		07173B6A17B6BFBF00FF8885 /* sky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sky.png; path = Images/sky.png; sourceTree = "<group>"; };
+		07173B6517B6BDD800FF8885 /* mountain@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mountain@2x.png"; sourceTree = "<group>"; };
+		07173B6617B6BDD800FF8885 /* sky@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sky@2x.png"; sourceTree = "<group>"; };
+		07173B6917B6BFBF00FF8885 /* mountain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mountain.png; sourceTree = "<group>"; };
+		07173B6A17B6BFBF00FF8885 /* mountain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mountain.png; sourceTree = "<group>"; };
 		0792BAB417B68E170078BA98 /* ELParallaxScrollview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELParallaxScrollview.h; sourceTree = "<group>"; };
 		0792BAB517B68E170078BA98 /* ELParallaxScrollview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELParallaxScrollview.m; sourceTree = "<group>"; };
-		07A0312917B6D3B60060389A /* KGLoveSomebody.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KGLoveSomebody.ttf; path = Images/KGLoveSomebody.ttf; sourceTree = "<group>"; };
-		07A0312B17B6DA9B0060389A /* triforce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = triforce.png; path = Images/triforce.png; sourceTree = "<group>"; };
-		07A0312D17B6E1BD0060389A /* create_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = create_bg.png; path = Images/create_bg.png; sourceTree = "<group>"; };
+		07A0312917B6D3B60060389A /* KGLoveSomebody.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KGLoveSomebody.ttf; sourceTree = "<group>"; };
+		07A0312B17B6DA9B0060389A /* triforce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triforce.png; sourceTree = "<group>"; };
+		07A0312D17B6E1BD0060389A /* create_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = create_bg.png; sourceTree = "<group>"; };
+		07BECAD917E390DF00DB9355 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		07C5BAB517B5DB8B006F06F9 /* ELParallaxScrollviewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ELParallaxScrollviewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07C5BAB817B5DB8B006F06F9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		07C5BABA17B5DB8B006F06F9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -61,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07BECADA17E390DF00DB9355 /* CoreMotion.framework in Frameworks */,
 				07C5BAB917B5DB8B006F06F9 /* UIKit.framework in Frameworks */,
 				07C5BABB17B5DB8B006F06F9 /* Foundation.framework in Frameworks */,
 				07C5BABD17B5DB8B006F06F9 /* CoreGraphics.framework in Frameworks */,
@@ -86,13 +89,12 @@
 				07A0312B17B6DA9B0060389A /* triforce.png */,
 				07A0312917B6D3B60060389A /* KGLoveSomebody.ttf */,
 				07173B6917B6BFBF00FF8885 /* mountain.png */,
-				07173B6A17B6BFBF00FF8885 /* sky.png */,
+				07173B6A17B6BFBF00FF8885 /* mountain.png */,
 				07173B6517B6BDD800FF8885 /* mountain@2x.png */,
 				07173B6617B6BDD800FF8885 /* sky@2x.png */,
 			);
-			name = Images;
-			path = /Users/Eric/Documents/ELParallaxScrollviewDemo/Images;
-			sourceTree = "<absolute>";
+			path = Images;
+			sourceTree = "<group>";
 		};
 		07C5BAAC17B5DB8B006F06F9 = {
 			isa = PBXGroup;
@@ -116,6 +118,7 @@
 		07C5BAB717B5DB8B006F06F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07BECAD917E390DF00DB9355 /* CoreMotion.framework */,
 				07C5BAB817B5DB8B006F06F9 /* UIKit.framework */,
 				07C5BABA17B5DB8B006F06F9 /* Foundation.framework */,
 				07C5BABC17B5DB8B006F06F9 /* CoreGraphics.framework */,
@@ -210,7 +213,7 @@
 				07173B6717B6BDD800FF8885 /* mountain@2x.png in Resources */,
 				07173B6817B6BDD800FF8885 /* sky@2x.png in Resources */,
 				07173B6B17B6BFBF00FF8885 /* mountain.png in Resources */,
-				07173B6C17B6BFBF00FF8885 /* sky.png in Resources */,
+				07173B6C17B6BFBF00FF8885 /* mountain.png in Resources */,
 				07A0312A17B6D3B60060389A /* KGLoveSomebody.ttf in Resources */,
 				07A0312C17B6DA9B0060389A /* triforce.png in Resources */,
 				07A0312E17B6E1BD0060389A /* create_bg.png in Resources */,
